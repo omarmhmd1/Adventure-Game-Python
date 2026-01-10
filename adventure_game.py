@@ -1,410 +1,366 @@
-# Import Time Module to Create Sleeping
+# استيراد وحدة الوقت لإنشاء تأخير
 import time
-# Import Random
+# استيراد وحدة عشوائية
 import random
 
-
-# Function for print and then sleep
-def print_pause(
-        text):
+# دالة للطباعة ثم النوم
+def print_pause(text):
     print(text)
     time.sleep(2)
 
 # -------------------------------------------------------
 
-
-# Function takes the choice from player
+# دالة تأخذ اختيار اللاعب
 def take_the_choice():
-    choice = input("Press (1 or 2) : ")
+    choice = input("اضغط (1 أو 2) : ")
     while choice not in ["1", "2"]:
-        choice = input("Please, Press (1 or 2) : ")
+        choice = input("من فضلك، اضغط (1 أو 2) : ")
     return choice
 
-
-# Function asks player for play again
+# دالة تسأل اللاعب إذا كان يريد اللعب مرة أخرى
 def ask_play_again():
-    try_again = input("Do you want play again [y/n] : ")
-    while try_again.lower() not in ["y", "n"]:
-        try_again = input("Pleas enter [y/n] : ")
+    try_again = input("هل تريد اللعب مرة أخرى [نعم/لا] : ")
+    while try_again.lower() not in ["نعم", "لا"]:
+        try_again = input("من فضلك أدخل [نعم/لا] : ")
     return try_again.lower()
 
-
-# Function shows game over message
+# دالة تعرض رسالة نهاية اللعبة
 def game_over():
     state = False
-    print("Thank you, we hope enjoyed it.")
+    print("شكراً لك، نأمل أنك استمتعت بها.")
     return state
 
 # -------------------------------------------------------
 
-
-# Function starts the game
+# دالة تبدأ اللعبة
 def describe_what_happen():
-    # Print Welcome and Description
-    print_pause("\nWelcome To Adventure World - Space Adventure !\n")
-    print_pause("While you were at the Earth Alien Protection Center")
-    print_pause("you received a message saying : that aliens are planning")
-    print_pause("to invade Earth by inventing a laser-powered cannon.")
-    print_pause("Once this plan is complete,")
-    print_pause("the Laser Cannon will be aimed")
-    print_pause("at Earth, and in an instant, ")
-    print_pause("the planet will be reduced to ash")
-    print_pause("Then, You said to yourself :\n")
-    # Show choices from player
-    print_pause("1- Will I confront them and defeat them?")
-    print_pause("2- Will I leave it to someone else with their team?")
+    # طباعة الترحيب والوصف
+    print_pause("\nمرحباً بك في عالم المغامرات - مغامرة الفضاء!\n")
+    print_pause("أثناء وجودك في مركز حماية الأرض ضد الكائنات الفضائية")
+    print_pause("تلقيت رسالة تقول: أن الفضائيين يخططون")
+    print_pause("لاحتلال الأرض عن طريق اختراع مدفع يعمل بالطاقة الليزرية.")
+    print_pause("بمجرد أن يكتمل هذا المخطط،")
+    print_pause("سيتم توجيه مدفع الليزر")
+    print_pause("نحو الأرض، وفي لحظة،")
+    print_pause("ستتحول الكوكب إلى رماد")
+    print_pause("ثم، قلت لنفسك:\n")
+    # عرض الخيارات للاعب
+    print_pause("1- هل سأواجههم وأهزمهم؟")
+    print_pause("2- هل سأترك المهمة لشخص آخر مع فريقه؟")
     return take_the_choice()
 
+# دالة إذا اختار اللاعب إنقاذ العالم والذهاب لمهاجمة الفضائيين
+def choose_saving_world(color_of_first_planet, color_of_second_planet):
+    print_pause("هذا صحيح! دعونا نركب مركبة فضائية تتحرك بسرعة كبيرة")
+    print_pause("أثناء ذهابك إلى الفضائيين، رأيت كوكبين،")
+    print_pause(f"الأول كان {color_of_first_planet},")
+    print_pause(f"والآخر كان {color_of_second_planet}, يا إلهي!")
+    print_pause("بدأ الفضائيون في مهاجمتنا باستخدام الدفاعات بالليزر.")
+    print_pause("ماذا أفعل؟")
 
-# Function if player chooses to save world and go to attack aliens
-def choose_saving_world(
-        color_of_first_planet, color_of_second_planet):
-    print_pause("That is true! Let's go to ride")
-    print_pause("a Spacecraft that moves very quickly")
-    print_pause("As you were going to aliens, You saw two Planets, ")
-    print_pause(f"the first was {color_of_first_planet},")
-    print_pause(f"the other was {color_of_second_planet}, Oh no !")
-    print_pause("the aliens started attacking us using laser defenses.")
-    print_pause("What do I do ?", )
-
-
-# Function if player chooses to leave it the task for
-# someone else and their team and the tries are zero
+# دالة إذا اختار اللاعب ترك المهمة لشخص آخر وفريقه وكانت المحاولات صفر
 def decision_staying_tries_zero():
-    print_pause("You decided to stay and leave the task for")
-    print_pause("someone else and their team")
-    print_pause("But the another person couldn't succeed in it !")
-    print_pause("Oh no ! the aliens fired a laser beam and the")
-    print_pause("earth would turn to ash..\nYou Lose")
+    print_pause("قررت أن تبقى وتترك المهمة لشخص آخر وفريقه")
+    print_pause("لكن الشخص الآخر لم ينجح في المهمة!")
+    print_pause("يا إلهي! أطلق الفضائيون شعاع ليزر والأرض ستتحول إلى رماد..")
+    print_pause("لقد خسرت!")
     return ask_play_again()
 
-
-# Function if player chooses to leave it the task for
-# someone else and their team the tries aren't zero
+# دالة إذا اختار اللاعب ترك المهمة لشخص آخر وفريقه وكانت المحاولات غير صفر
 def decision_staying_tries_not_zero():
-    print_pause("You decided to stay and leave the task for person else")
-    print_pause("But the another person couldn't succeed in it !")
-    print_pause("But there is another chance before aliens")
-    print_pause("fire a laser beam and the earth would turn to ash..")
-    print_pause("1- Will I confront them and defeat them?")
-    print_pause("2- Will I leave it to someone else with their team")
+    print_pause("قررت أن تبقى وتترك المهمة لشخص آخر")
+    print_pause("لكن الشخص الآخر لم ينجح في المهمة!")
+    print_pause("لكن هناك فرصة أخرى قبل أن يطلق الفضائيون")
+    print_pause("شعاع الليزر والأرض ستتحول إلى رماد..")
+    print_pause("1- هل سأواجههم وأهزمهم؟")
+    print_pause("2- هل سأترك المهمة لشخص آخر مع فريقه؟")
     return take_the_choice()
-
 
 # -------------------------------------------------------
 
-
-# Function if player chooses to land on first planet
-def landing_on_first_planet(
-        monsters):
-    print_pause("You decided to land on the first planet,")
-    print_pause(f"Then, You saw {monsters} guard the energy building")
-    print_pause("that makes energy for big and huge Laser Cannon")
-    print_pause("What do you want to do ?")
-    print_pause("1- Attack them and blow up the energy building")
-    print_pause("2- Back to space where you found the safe place")
+# دالة إذا اختار اللاعب الهبوط على الكوكب الأول
+def landing_on_first_planet(monsters):
+    print_pause("قررت الهبوط على الكوكب الأول،")
+    print_pause(f"ثم رأيت {monsters} يحرسون مبنى الطاقة")
+    print_pause("الذي يزود المدفع الليزري بالطاقة")
+    print_pause("ماذا تريد أن تفعل؟")
+    print_pause("1- أهاجمهم وأفجر مبنى الطاقة")
+    print_pause("2- أعود إلى الفضاء حيث وجدنا المكان الآمن")
     return take_the_choice()
 
-
-# Function if player chooses to land on second planet
-def landing_on_second_planet(
-        found):
-    # Check if player goes first time or no
+# دالة إذا اختار اللاعب الهبوط على الكوكب الثاني
+def landing_on_second_planet(found):
+    # تحقق إذا كان اللاعب قد ذهب إلى هناك من قبل أم لا
     if found is False:
-        print_pause("You landed safely on a second planet,")
-        print_pause("then you get out of the spacecraft,")
-        print_pause("angry that you couldn't defeat the aliens and")
-        print_pause("slam your leg into the dirt in anger.")
-        print_pause("Here's the surprise! You accidentally hit a")
-        print_pause("machine's operating lever")
-        print_pause("and a building appears containing more than")
-        print_pause("100 automated spacecraft operating\nWow!")
-        print_pause("1- Will you turn on those automated spacecraft")
-        print_pause("2- Back to space where you found the safe place")
+        print_pause("هبطت بأمان على الكوكب الثاني،")
+        print_pause("ثم خرجت من المركبة الفضائية،")
+        print_pause("غاضباً لأنك لم تتمكن من هزيمة الفضائيين و")
+        print_pause("صدمت قدمك في التراب بغضب.")
+        print_pause("إليك المفاجأة! لقد ضربت عن غير قصد")
+        print_pause("رافعة تشغيل جهاز")
+        print_pause("وظهر مبنى يحتوي على أكثر من")
+        print_pause("100 مركبة فضائية آلية تعمل\nواو!")
+        print_pause("1- هل ستشغل تلك المركبات الفضائية الآلية؟")
+        print_pause("2- أعود إلى الفضاء حيث وجدنا المكان الآمن")
         return take_the_choice()
     else:
-        print_pause("You went to second planet")
-        print_pause("You did not see any new thing")
-        print_pause("You saw the building containing more than")
-        print_pause("100 automated spacecraft operating")
-        print_pause("1- Will you turn on those automated spacecraft")
-        print_pause("2- Back to space where you found the safe place")
+        print_pause("ذهبت إلى الكوكب الثاني")
+        print_pause("لم تر أي شيء جديد")
+        print_pause("رأيت المبنى الذي يحتوي على أكثر من")
+        print_pause("100 مركبة فضائية آلية تعمل")
+        print_pause("1- هل ستشغل تلك المركبات الفضائية الآلية؟")
+        print_pause("2- أعود إلى الفضاء حيث وجدنا المكان الآمن")
         return take_the_choice()
-
 
 # ------------------------------------------------------
 
-
-# Function if player chooses to attack them and blow up the energy building
-def attack_and_blow_up(
-        power, monster):
-    # Check from Power
+# دالة إذا اختار اللاعب مهاجمة الفضائيين وتفجير مبنى الطاقة
+def attack_and_blow_up(power, monster):
+    # تحقق من القوة
     if power >= 70:
-        print_pause("You turned on them and went to the first planet")
-        print_pause(f"You saw {monster} around the energy building")
-        print_pause("You started attacking with your automated")
-        print_pause("spacecrafts, Cool, We are about to defeat them,")
-        print_pause("We did it, We defeated enemy")
-        print_pause("But the Laser Cannon is still has energy source")
-        print_pause("Let's go to the planet contains")
-        print_pause("Big and Huge Laser Cannon\n")
+        print_pause("لقد توجهت نحوهم وذهبت إلى الكوكب الأول")
+        print_pause(f"رأيت {monster} حول مبنى الطاقة")
+        print_pause("بدأت الهجوم باستخدام مركباتك الفضائية الآلية، رائع، نحن على وشك هزيمتهم،")
+        print_pause("لقد فعلناها، هزمنا العدو")
+        print_pause("لكن مدفع الليزر ما زال يحتوي على مصدر للطاقة")
+        print_pause("لنذهب إلى الكوكب الذي يحتوي")
+        print_pause("على مدفع الليزر الكبير والضخم\n")
         return "success"
-
     elif 25 < power < 70:
-        print_pause("You started attacking them, But they were stronger")
-        print_pause("than you, So you couldn't defeat them and you")
-        print_pause("escaped to safe place on the planet")
-        print_pause("1- Back again and attack them")
-        print_pause("2- Back to space where you found the safe place")
+        print_pause("بدأت الهجوم عليهم، لكنهم كانوا أقوى منك")
+        print_pause("لذلك لم تتمكن من هزيمتهم وهربت إلى مكان آمن على الكوكب")
+        print_pause("1- عد مرة أخرى وهاجمهم")
+        print_pause("2- أعود إلى الفضاء حيث وجدنا المكان الآمن")
         return take_the_choice()
-
     elif power <= 25:
-        print_pause("You started attacking, No, the power of")
-        print_pause("your spacecraft is too weak")
-        print_pause("Oh No, They defeated your spacecraft and catch you, ")
-        print_pause("You Lose!")
+        print_pause("بدأت الهجوم، لا، قوة")
+        print_pause("مركبتك الفضائية ضعيفة جداً")
+        print_pause("يا إلهي، لقد هزموا مركبتك الفضائية وأمسكوا بك،")
+        print_pause("لقد خسرت!")
         return ask_play_again()
 
-
 # -------------------------------------------------------
 
-
-# Function asks player which planet player will go to it
+# دالة تسأل اللاعب أي كوكب سيذهب إليه
 def go_to_first_or_second_planet():
-    print_pause("You went to safe area in space,")
-    print_pause("And you still seeing the same planets")
-    print_pause("Which planet will you go to?")
-    print_pause("1- First Planet")
-    print_pause("2- Second Planet")
+    print_pause("ذهبت إلى منطقة آمنة في الفضاء،")
+    print_pause("وما زلت ترى نفس الكواكب")
+    print_pause("أي كوكب ستذهب إليه؟")
+    print_pause("1- الكوكب الأول")
+    print_pause("2- الكوكب الثاني")
     return take_the_choice()
 
-
-# Function if player reaches the planet contains Laser Cannon
+# دالة إذا وصل اللاعب إلى الكوكب الذي يحتوي على المدفع الليزري
 def reaches_the_laser_cannon():
-    print_pause("Cool, Let's go to attack! You and the")
-    print_pause("automated spacecrafts went, Let's to defeat the Cannon")
-    print_pause("You saw the Laser Cannon, It was big and huge")
-    print_pause("-To Defeat the cannon, You must answer the puzzle-")
-    print_pause("the system of cannon said it\n")
-    print_pause("The Puzzle : -A snail climbs a 20-meter-high wall every day,")
-    print_pause("It climbs two meters during the day and")
-    print_pause("descends one meter at night to be able to pull-\n")
-    print_pause("How many days does it take for")
-    print_pause("a snail to reach the top of the wall ?")
-    print_pause("1-20 \n2-19 \n3-21 ")
-    puzzle_answer = input("Press (1 , 2 or 3) : ")
+    print_pause("رائع، دعنا نذهب للهجوم! أنت والمركبات الفضائية الآلية ذهبتم، لننهزم المدفع")
+    print_pause("رأيت المدفع الليزري، كان كبيراً وضخماً")
+    print_pause("-لإلحاق الهزيمة بالمدفع، يجب أن تجيب على اللغز-")
+    print_pause("قال النظام في المدفع\n")
+    print_pause("اللغز: -حلزون يتسلق جداراً عالياً بارتفاع 20 مترًا كل يوم،")
+    print_pause("يتسلق مترين أثناء النهار و")
+    print_pause("ينزل مترًا في الليل ليتمكن من سحب-\n")
+    print_pause("كم من الأيام يحتاج الحلزون ليصل إلى قمة الجدار؟")
+    print_pause("1- 20 \n2- 19 \n3- 21 ")
+    puzzle_answer = input("اضغط (1 ، 2 أو 3) : ")
     while puzzle_answer not in ["1", "2", "3"]:
-        puzzle_answer = input("Please, Press (1 , 2 or 3) : ")
+        puzzle_answer = input("من فضلك، اضغط (1 ، 2 أو 3) : ")
     return puzzle_answer
 
-
 # -------------------------------------------------------
 
-
-# Function if player solves the puzzle
+# دالة إذا حل اللاعب اللغز
 def solve_puzzle():
-    print_pause("Hold on, the cannon is about to explode")
-    print_pause("Three,")
-    print_pause("Two,")
-    print_pause("One,")
-    print_pause("BOOM")
-    print_pause("Yes, We did it, You're Victorious!")
+    print_pause("تمهل، المدفع على وشك الانفجار")
+    print_pause("ثلاثة،")
+    print_pause("اثنان،")
+    print_pause("واحد،")
+    print_pause("بوم!")
+    print_pause("نعم، فعلناها، أنت منتصر!")
 
-
-# Function if player couldn't solve the puzzle
+# دالة إذا لم يحل اللاعب اللغز
 def not_solve_puzzle():
-    print_pause("Wrong Solution, Shot on the Earth")
-    print_pause("No, You Lose !")
+    print_pause("حل خاطئ، تم إطلاق النار على الأرض")
+    print_pause("لا، لقد خسرت!")
     return ask_play_again()
 
-
-# Function increases or decreases the total score
-# and print total score
+# دالة لزيادة أو تقليل النقاط الإجمالية
 def print_total_score(total_score, points):
     total_score += points
-    print_pause("\n" + str(points) + " points\n")
-    print_pause("You Total Score : " + str(total_score))
+    print_pause("\n" + str(points) + " نقاط\n")
+    print_pause("إجمالي نقاطك : " + str(total_score))
     return total_score
-
 
 # -------------------------------------------------------
 
-
-# Main Function that start the game and continue the story
+# الدالة الرئيسية التي تبدأ اللعبة وتستمر في القصة
 def main():
+    # اختيار عشوائي للون الكوكب الأول والثاني
+    color_of_first_planet = random.choice(["أزرق", "أرجواني", "أزرق-أخضر"])
+    color_of_second_planet = random.choice(["أحمر", "برتقالي", "بني"])
+    # اختيار عشوائي للوحوش
+    monsters = random.choice(["فضائيين", "وحوش أرضية", "مدافع ليزر"])
 
-    # Random color for first planet and second planet
-    color_of_first_planet = random.choice(["blue", "purple", "green-blue"])
-    color_of_second_planet = random.choice(["red", "orange", "brown"])
-    # Random Monster
-    monsters = random.choice(["aliens", "Ground Monsters", "Laser Cannons"])
-
-    # The state of game
+    # حالة اللعبة
     state_of_game = True
-    # number of tries for try saving the world
+    # عدد المحاولات لإنقاذ العالم
     tries = 3
-    # The value of power to defeat the monster
+    # قيمة القوة لهزيمة الوحوش
     power = 50
-    # found the automated spacecrafts
+    # إذا تم العثور على المركبات الفضائية الآلية
     found = False
-    # Total Score
+    # إجمالي النقاط
     total_score = 20
 
-    # Is function (save world) call
+    # إذا تم استدعاء دالة (إنقاذ العالم)
     is_choose_saving_world_function_call = False
 
-    # Print Welcome and Description
+    # طباعة الترحيب والوصف
     first_choice = describe_what_happen()
     while state_of_game is True:
-        # Scenario 1 - War Aliens or Leave the Task
+        # السيناريو 1 - الحرب مع الفضائيين أو ترك المهمة
 
-        # Correct choice - Go And Attack
+        # الاختيار الصحيح - الهجوم
         if first_choice == "1":
-
-            # Scenario 2 - Land on First Planet or Second Planet
-            # Show going to spacecraft and Increase Score but once
+            # السيناريو 2 - الهبوط على الكوكب الأول أو الثاني
+            # عرض الذهاب إلى المركبة الفضائية وزيادة النقاط مرة واحدة
             if is_choose_saving_world_function_call is False:
-                # Increase Score
+                # زيادة النقاط
                 total_score = print_total_score(total_score, 15)
-                choose_saving_world(color_of_first_planet,
-                                    color_of_second_planet)
+                choose_saving_world(color_of_first_planet, color_of_second_planet)
 
                 is_choose_saving_world_function_call = True
 
-            # Variable has the choice go to first or second planet
+            # اختيار الهبوط على الكوكب الأول أو الثاني
             land_on_first_or_second = go_to_first_or_second_planet()
 
-            # Correct choice - Landing on Second Planet
+            # الاختيار الصحيح - الهبوط على الكوكب الثاني
             if land_on_first_or_second == "2":
-
-                # Increase Score
+                # زيادة النقاط
                 total_score = print_total_score(total_score, 10)
 
-                # Scenario 3 - Turn the Automated Spacecraft or
-                # Back to Area where it is safe
-
+                # السيناريو 3 - تشغيل المركبات الفضائية الآلية أو العودة إلى المنطقة الآمنة
                 choice_second_planet = landing_on_second_planet(found)
                 found = True
 
-                # Correct Choice - Turn the Automated Spacecrafts
+                # الاختيار الصحيح - تشغيل المركبات الفضائية الآلية
                 if choice_second_planet == "1":
-
-                    # Increase Score
+                    # زيادة النقاط
                     total_score = print_total_score(total_score, 20)
 
-                    # Scenario 4 - Attack and Solve or not Solve the puzzle
+                    # السيناريو 4 - الهجوم وحل اللغز أو عدم حله
                     power += 50
                     attack_and_blow_up(power, monsters)
-                    # Variable has the choice of the puzzle
+                    # اختيار اللغز
                     puzzle_answer = reaches_the_laser_cannon()
 
-                    # Puzzle Answer - Correct Choice
+                    # الإجابة الصحيحة على اللغز
                     if puzzle_answer == "2":
                         solve_puzzle()
-                        # Increase Score
+                        # زيادة النقاط
                         total_score = print_total_score(total_score, 25)
 
-                        # Solve Puzzle and play again - yes or no
+                        # حل اللغز واللعب مرة أخرى - نعم أو لا
                         play_again = ask_play_again()
-                        if play_again.lower() == "y":
+                        if play_again.lower() == "نعم":
                             first_choice = describe_what_happen()
                         else:
                             state_of_game = game_over()
 
-                    # Puzzle Answer - incorrect Choice
+                    # الإجابة الخاطئة على اللغز
                     else:
-                        # Decrease Score
+                        # تقليل النقاط
                         total_score = print_total_score(total_score, -10)
 
-                        # Not Solve Puzzle and play again - yes or no
+                        # عدم حل اللغز واللعب مرة أخرى - نعم أو لا
                         play_again = not_solve_puzzle()
 
-                        if play_again.lower() == "y":
+                        if play_again.lower() == "نعم":
                             first_choice = describe_what_happen()
                         else:
                             state_of_game = game_over()
 
-                # Incorrect Choice - Back to the safe space area
+                # الاختيار غير الصحيح - العودة إلى المنطقة الآمنة
                 else:
-                    # Decrease Score
+                    # تقليل النقاط
                     total_score = print_total_score(total_score, -5)
 
-                    print_pause("You returned to the safe space area")
+                    print_pause("لقد عدت إلى المنطقة الآمنة")
                     continue
 
             else:
-                # Decrease Score
+                # تقليل النقاط
                 total_score = print_total_score(total_score, -15)
 
-                # Scenario 5
-                # Attack the Monsters or Back to Area where it is safe
+                # السيناريو 5
+                # الهجوم على الوحوش أو العودة إلى المنطقة الآمنة
                 choice_first_planet = landing_on_first_planet(monsters)
 
-                # Correct Choice - Back to Area where it is safe
+                # الاختيار الصحيح - العودة إلى المنطقة الآمنة
                 if choice_first_planet == "2":
-                    # Increase Score
+                    # زيادة النقاط
                     total_score = print_total_score(total_score, 10)
 
-                    print_pause("You decided to return to")
-                    print_pause("the safe space area")
+                    print_pause("قررت العودة إلى")
+                    print_pause("المنطقة الآمنة")
                     continue
 
-                # Attack the monsters - Incorrect Choice
+                # الهجوم على الوحوش - الاختيار غير الصحيح
                 else:
-                    # Decrease Score
+                    # تقليل النقاط
                     total_score = print_total_score(total_score, -10)
 
                     power -= random.choice([15, 5, 10])
                     choice_attack = attack_and_blow_up(power, monsters)
 
-                    # Attack the Monster until player chooses attack them
+                    # الهجوم على الوحوش حتى يختار اللاعب الهجوم عليهم
                     while choice_attack == "1":
-                        # Decrease Score
+                        # تقليل النقاط
                         total_score = print_total_score(total_score, -10)
 
                         power -= random.choice([15, 5, 10])
                         choice_attack = attack_and_blow_up(power, monsters)
 
-                        # Check the power and show score
+                        # تحقق من القوة وعرض النقاط
                         if power <= 20:
-                            print_pause("Your Score : " + str(total_score))
+                            print_pause("إجمالي نقاطك : " + str(total_score))
 
-                    # Increase Score
+                    # زيادة النقاط
                     total_score = print_total_score(total_score, 5)
 
-                    # Try Again
-                    if choice_attack.lower() == "y":
+                    # المحاولة مرة أخرى
+                    if choice_attack.lower() == "نعم":
                         tries = 3
                         total_score = 20
                         found = False
                         is_choose_saving_world_function_call = False
                         first_choice = describe_what_happen()
-                    elif choice_attack.lower() == "n":
+                    elif choice_attack.lower() == "لا":
                         state_of_game = game_over()
 
-        # Incorrect Choice - Leave the task
+        # الاختيار غير الصحيح - ترك المهمة
         elif first_choice == "2":
 
-            # Decrease Score
+            # تقليل النقاط
             total_score = print_total_score(total_score, -5)
 
-            # Try Again
-            # If his tries is zero
+            # المحاولة مرة أخرى
+            # إذا كانت المحاولات صفر
             if tries == 0:
                 try_again = decision_staying_tries_zero()
-                if try_again.lower() == "y":
+                if try_again.lower() == "نعم":
                     tries = 3
                     total_score = 20
                     found = False
                     is_choose_saving_world_function_call = False
                     first_choice = describe_what_happen()
-                elif try_again.lower() == "n":
+                elif try_again.lower() == "لا":
                     state_of_game = game_over()
 
-            # If his tries is greater than zero
+            # إذا كانت المحاولات أكبر من صفر
             else:
                 tries -= 1
                 first_choice = decision_staying_tries_not_zero()
+
 
 
 if __name__ == "__main__":
